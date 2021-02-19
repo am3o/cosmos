@@ -27,7 +27,7 @@ export default {
     async submit() {
       const payload = {
         type: "poll",
-        module: "voter",
+        module: "cosmos",
         body: {
           title: this.title,
           options: this.options.map(o => o.title)
