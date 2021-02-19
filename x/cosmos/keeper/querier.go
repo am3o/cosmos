@@ -15,6 +15,10 @@ func NewQuerier(k Keeper) sdk.Querier {
 	return func(ctx sdk.Context, path []string, req abci.RequestQuery) ([]byte, error) {
 		switch path[0] {
 		// this line is used by starport scaffolding # 2
+		case types.QueryListVote:
+			return listVote(ctx, k)
+		case types.QueryGetVote:
+			return getVote(ctx, path[1:], k)
 		case types.QueryListPoll:
 			return listPoll(ctx, k)
 		case types.QueryGetPoll:

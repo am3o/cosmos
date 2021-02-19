@@ -8,6 +8,7 @@
         Pools
       </SpH3>
       <poll-form />
+      <poll-list/>
     </div>
   </div>
 </template>
@@ -15,8 +16,9 @@
 <script>
 import * as sp from "@tendermint/vue";
 import PollForm from "../components/PollForm";
+import PollList from "../components/PollList"
 
 export default {
-  components: { PollForm, ...sp  },
+  components: { PollForm, PollList, ...sp  },
 };
 </script>

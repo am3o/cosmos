@@ -17,6 +17,7 @@ export default {
   created() {
     this.$store.dispatch("cosmos/init");
     this.$store.dispatch("cosmos/entityFetch", {type: "poll", module: "cosmos"});
+    this.$store.dispatch("cosmos/entityFetch", {type: "vote", module: "cosmos"});
   },
 };
 </script>

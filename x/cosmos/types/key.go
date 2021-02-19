@@ -18,3 +18,8 @@ const (
 	PollPrefix      = "poll-value-"
 	PollCountPrefix = "poll-count-"
 )
+
+const (
+	VotePrefix      = "vote-value-"
+	VoteCountPrefix = "vote-count-"
+)
