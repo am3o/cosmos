@@ -1,2 +1,2 @@
 # cosmos
-like the drink
+like the drink 🍸
