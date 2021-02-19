@@ -16,6 +16,7 @@ func handleMsgCreatePoll(ctx sdk.Context, k keeper.Keeper, msg types.MsgCreatePo
 		Title:   msg.Title,
 		Options: msg.Options,
 	}
+
 	var accAddress = crypto.AddressHash([]byte(types.ModuleName))
 	fmt.Println(accAddress)
 
@@ -25,6 +26,8 @@ func handleMsgCreatePoll(ctx sdk.Context, k keeper.Keeper, msg types.MsgCreatePo
 		return nil, err
 	}
 	k.CreatePoll(ctx, msg)
+
+	fmt.Println(k.CoinKeeper.GetCoins(ctx, moduleAcct))
 
 	return &sdk.Result{Events: ctx.EventManager().Events()}, nil
 }
