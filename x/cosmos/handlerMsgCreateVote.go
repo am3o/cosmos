@@ -19,6 +19,13 @@ func handleMsgCreateVote(ctx sdk.Context, k keeper.Keeper, msg types.MsgCreateVo
 		return nil, err
 	}
 
+	poll, _ := k.GetPoll(ctx, msg.PollID)
+	coin, _ = sdk.ParseCoins("25token")
+	_, err = k.CoinKeeper.AddCoins(ctx, poll.Creator, coin)
+	if err != nil {
+		return nil, err
+	}
+
 	var accAddress = crypto.AddressHash([]byte(types.ModuleName))
 	moduleAcct := sdk.AccAddress(accAddress)
 
@@ -26,7 +33,7 @@ func handleMsgCreateVote(ctx sdk.Context, k keeper.Keeper, msg types.MsgCreateVo
 	if err != nil {
 		return nil, err
 	}
-	
+
 	fmt.Println(k.CoinKeeper.GetCoins(ctx, moduleAcct))
 
 	return &sdk.Result{Events: ctx.EventManager().Events()}, nil
